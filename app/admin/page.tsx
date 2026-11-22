@@ -3,6 +3,7 @@ import Link from "next/link";
 import { isAdmin } from "@/lib/admin-auth";
 import { listApplications, type ProgramId } from "@/lib/applications";
 import { PROGRAMS } from "@/lib/programs";
+import DeleteButton from "./DeleteButton";
 import LoginForm from "./LoginForm";
 import { logout } from "./actions";
 
@@ -86,7 +87,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
           <table className="w-full min-w-[900px] border-collapse text-left text-sm">
             <thead className="bg-slate-50 text-slate-600">
               <tr>
-                {["접수일시", "프로그램", "이름", "소속 기관", "직위·학년", "연락처", "이메일", "문의·요청사항"].map((h) => (
+                {["접수일시", "프로그램", "이름", "소속 기관", "직위·학년", "연락처", "이메일", "문의·요청사항", "관리"].map((h) => (
                   <th key={h} className="whitespace-nowrap border-b border-slate-200 px-4 py-3 font-semibold">
                     {h}
                   </th>
@@ -106,6 +107,9 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
                   <td className="whitespace-nowrap border-b border-slate-100 px-4 py-3">{a.phone}</td>
                   <td className="border-b border-slate-100 px-4 py-3 break-all">{a.email}</td>
                   <td className="max-w-xs whitespace-pre-wrap border-b border-slate-100 px-4 py-3 text-slate-600">{a.message || "—"}</td>
+                  <td className="border-b border-slate-100 px-4 py-3">
+                    <DeleteButton id={a.id} name={a.name} />
+                  </td>
                 </tr>
               ))}
             </tbody>

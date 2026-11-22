@@ -1,7 +1,9 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { adminConfigured, checkPassword, clearFails, clientKey, endSession, lockedFor, recordFail, startSession } from "@/lib/admin-auth";
+import { revalidatePath } from "next/cache";
+import { deleteApplication } from "@/lib/applications";
+import { isAdmin, adminConfigured, checkPassword, clearFails, clientKey, endSession, lockedFor, recordFail, startSession } from "@/lib/admin-auth";
 
 export type LoginState = { error?: string };
 
@@ -19,6 +21,15 @@ export async function login(_prev: LoginState, fd: FormData): Promise<LoginState
   clearFails(key);
   await startSession();
   redirect("/admin");
+}
+
+/** 신청 1건 삭제: 관리자 로그인이 확인된 경우에만 동작한다. */
+export async function removeApplication(fd: FormData) {
+  if (!(await isAdmin())) return;
+  const id = String(fd.get("id") ?? "");
+  if (!id) return;
+  await deleteApplication(id);
+  revalidatePath("/admin");
 }
 
 export async function logout() {

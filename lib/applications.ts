@@ -21,7 +21,8 @@ export type Application = {
 
 export type NewApplication = Omit<Application, "id" | "createdAt">;
 
-const FILE = path.join(process.cwd(), "data", "applications.json");
+// 배포 서버에서는 영구 디스크(볼륨)가 붙은 폴더를 DATA_DIR 환경변수로 지정한다. 없으면 프로젝트의 data 폴더를 쓴다.
+const FILE = path.join(process.env.DATA_DIR || path.join(process.cwd(), "data"), "applications.json");
 
 // 동시에 들어온 신청이 서로 덮어쓰지 않도록 한 번에 하나씩 처리한다.
 let chain: Promise<unknown> = Promise.resolve();
@@ -43,6 +44,19 @@ async function readAll(): Promise<Application[]> {
 
 export function listApplications() {
   return locked(async () => (await readAll()).sort((a, b) => b.createdAt.localeCompare(a.createdAt)));
+}
+
+export function deleteApplication(id: string) {
+  return locked(async () => {
+    const all = await readAll();
+    const next = all.filter((a) => a.id !== id);
+    if (next.length === all.length) return false;
+    await fs.mkdir(path.dirname(FILE), { recursive: true });
+    const tmp = `${FILE}.tmp`;
+    await fs.writeFile(tmp, JSON.stringify(next, null, 2), "utf8");
+    await fs.rename(tmp, FILE);
+    return true;
+  });
 }
 
 export function addApplication(input: NewApplication) {
