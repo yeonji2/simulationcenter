@@ -41,6 +41,11 @@ export default function RootLayout({
             <p className="mt-2">
               본 페이지의 공간·사진은 실시설계 도면과 3D 제안 이미지를 바탕으로 하며, 시공 과정에서 달라질 수 있습니다.
             </p>
+            <p className="mt-6 border-t border-slate-200 pt-4">
+              <Link href="/admin" className="text-xs font-medium text-slate-400 hover:text-slate-700">
+                관리자 페이지
+              </Link>
+            </p>
           </div>
         </footer>
       </body>

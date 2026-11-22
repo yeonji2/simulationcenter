@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PARTNER_ORGS, PROGRAMS, type Course, type Program } from "@/lib/programs";
+import ApplyForm from "./ApplyForm";
 
 export const metadata: Metadata = {
   title: "교육신청 | 단국대학교 간호시뮬레이션센터",
@@ -176,18 +177,14 @@ export default function ApplyPage() {
         </dl>
       </section>
 
-      <section className="mt-14 rounded-xl bg-slate-100 p-8 text-center">
-        <h2 className="text-xl font-bold">교육 신청 접수</h2>
+      <section id="apply-form" className="mt-14 scroll-mt-24 border-t border-slate-200 pt-12">
+        <h2 className="text-2xl font-bold tracking-tight">교육 신청</h2>
         <p className="mt-2 text-slate-600">
-          신청 접수 방법(신청서·문의처)은 확정되는 대로 이곳에 안내됩니다.
+          신청서를 작성해 주시면 담당자가 확인 후 입력하신 연락처로 안내드립니다.
         </p>
-        <button
-          type="button"
-          disabled
-          className="mt-5 cursor-not-allowed rounded-lg bg-slate-300 px-6 py-3 font-semibold text-slate-600"
-        >
-          접수 준비 중
-        </button>
+        <div className="mt-6 max-w-2xl">
+          <ApplyForm programs={PROGRAMS.map((p) => ({ id: p.id, code: p.code, label: p.targets.map((t) => t.title).join(" · ") }))} />
+        </div>
       </section>
 
       <p className="mt-8 text-xs leading-5 text-slate-500">
