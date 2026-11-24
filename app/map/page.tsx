@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MAP_VIEWBOX, ROOMS, type Room } from "@/lib/rooms";
+import { MAP_VIEWBOX, ROOMS, type Edge, type Room } from "@/lib/rooms";
 
 export const metadata: Metadata = {
   title: "센터 지도 | 단국대학교 간호시뮬레이션센터",
@@ -12,9 +12,33 @@ const FILL: Record<Room["category"], string> = {
   지원공간: "fill-slate-100",
 };
 
+const EDGES: Edge[] = ["top", "right", "bottom", "left"];
+
+/** 방 테두리. 모든 방의 색칠이 끝난 뒤 맨 위에 그려서, 옆 방 색에 가려지지 않게 한다. */
+function RoomBorder({ room }: { room: Room }) {
+  const { x, y, w, h } = room;
+  const hidden = new Set(room.hiddenEdges ?? []);
+  const dashed = new Set(room.dashedEdges ?? []);
+  const seg: Record<Edge, string> = {
+    top: `M${x} ${y}H${x + w}`,
+    right: `M${x + w} ${y}V${y + h}`,
+    bottom: `M${x} ${y + h}H${x + w}`,
+    left: `M${x} ${y}V${y + h}`,
+  };
+  const solid = EDGES.filter((e) => !hidden.has(e) && !dashed.has(e)).map((e) => seg[e]).join("");
+  const dashedPath = EDGES.filter((e) => dashed.has(e)).map((e) => seg[e]).join("");
+  const common = { fill: "none", strokeWidth: 2, vectorEffect: "non-scaling-stroke" as const, pointerEvents: "none" as const };
+  return (
+    <g>
+      {solid && <path d={solid} {...common} strokeLinecap="square" shapeRendering="crispEdges" className="stroke-slate-500" />}
+      {dashedPath && <path d={dashedPath} {...common} strokeLinecap="butt" strokeDasharray="7 6" className="stroke-slate-500" />}
+    </g>
+  );
+}
+
 function RoomShape({ room }: { room: Room }) {
   const narrow = room.w < 130;
-  const lines = narrow ? room.label.split(" ") : [room.label];
+  const lines = room.label.includes("\n") ? room.label.split("\n") : narrow ? room.label.split(" ") : [room.label];
   const cx = room.x + room.w / 2;
   const cy = room.y + room.h / 2;
   const hasSub = !!room.seats && room.w >= 140;
@@ -30,10 +54,9 @@ function RoomShape({ room }: { room: Room }) {
           y={room.y}
           width={room.w}
           height={room.h}
-          strokeWidth={2}
-          vectorEffect="non-scaling-stroke"
+          stroke="none"
           shapeRendering="crispEdges"
-          className={`${room.id === "corridor-1" ? "fill-white" : FILL[room.category]} stroke-slate-500 transition-colors group-hover:fill-sky-300`}
+          className={`${room.id === "corridor-1" ? "fill-white" : FILL[room.category]} transition-colors group-hover:fill-sky-300`}
         />
         {room.id === "prism" && (
           <rect
@@ -133,6 +156,9 @@ export default function MapPage() {
           <rect x={150} y={478} width={1660} height={552} fill="#f8fafc" />
           {ordered.map((r) => (
             <RoomShape key={r.id} room={r} />
+          ))}
+          {ordered.map((r) => (
+            <RoomBorder key={`border-${r.id}`} room={r} />
           ))}
         </svg>
       </div>

@@ -67,6 +67,8 @@ const SITE: Record<string, Photo[]> = {
   ],
 };
 
+export type Edge = "top" | "right" | "bottom" | "left";
+
 export type Room = {
   id: string;
   name: string;
@@ -77,6 +79,10 @@ export type Room = {
   w: number;
   h: number;
   category: "교육실" | "시뮬레이션" | "지원공간";
+  /** 지도에서 실선 대신 점선으로 그릴 변 */
+  dashedEdges?: Edge[];
+  /** 옆 방이 이미 그린 변이라 이 방에서는 그리지 않을 변 */
+  hiddenEdges?: Edge[];
   summary: string;
   seats?: number;
   facts: string[];
@@ -89,13 +95,13 @@ const BASE_ROOMS: Room[] = [
   // 지도 왼쪽 3칸. 높이 비율은 도면 치수(5,150 / 1,625 / 5,025mm)를 따른다.
   {
     id: "child-sim",
-    name: "아동 시뮬레이션",
-    label: "아동 시뮬레이션",
+    name: "아동건강시뮬레이션룸",
+    label: "아동건강\n시뮬레이션룸",
     x: 163, y: 497, w: 183, h: 228,
     category: "시뮬레이션",
     summary: "아동간호 시나리오를 실습하는 시뮬레이션 공간입니다. 아래의 조정실에서 실습 장면을 관찰합니다.",
     facts: ["세면대 설치"],
-    photos: [aiPhoto("child-sim-1.jpg", "아동·신생아 시뮬레이션실 — 인큐베이터, 영아 처치대, 환자 병상")],
+    photos: [aiPhoto("child-sim-1.jpg", "아동건강시뮬레이션룸 — 인큐베이터, 영아 처치대, 환자 병상")],
   },
   {
     id: "control-child-maternal",
@@ -103,19 +109,19 @@ const BASE_ROOMS: Room[] = [
     label: "조정실",
     x: 163, y: 725, w: 183, h: 72,
     category: "지원공간",
-    summary: "아동 시뮬레이션과 모성 시뮬레이션 사이에서 두 공간의 실습을 조작하고 관찰하는 조정실입니다.",
+    summary: "아동건강시뮬레이션룸과 모성건강시뮬레이션룸 사이에서 두 공간의 실습을 조작하고 관찰하는 조정실입니다.",
     facts: [],
     photos: [],
   },
   {
     id: "maternal-sim",
-    name: "모성 시뮬레이션",
-    label: "모성 시뮬레이션",
+    name: "모성건강시뮬레이션룸",
+    label: "모성건강\n시뮬레이션룸",
     x: 163, y: 797, w: 183, h: 218,
     category: "시뮬레이션",
     summary: "산모와 신생아를 위한 모성간호 시나리오를 실습하는 시뮬레이션 공간입니다.",
     facts: [],
-    photos: [aiPhoto("maternal-sim-1.jpg", "모성 시뮬레이션실 — 임산부 환자 시뮬레이터와 병상, 신생아 침대")],
+    photos: [aiPhoto("maternal-sim-1.jpg", "모성건강시뮬레이션룸 — 임산부 환자 시뮬레이터와 병상, 신생아 침대")],
   },
   {
     id: "debrief-4",
@@ -146,6 +152,7 @@ const BASE_ROOMS: Room[] = [
     name: "다목적 시뮬레이션룸",
     label: "다목적 시뮬레이션",
     x: 778, y: 497, w: 407, h: 228,
+    dashedEdges: ["right"], // 디브리핑룸 2와의 경계는 점선
     category: "시뮬레이션",
     summary:
       "병상 3개와 천장 커튼 레일을 갖춘 다목적 시뮬레이션룸입니다. 병동 환경을 비롯한 다양한 시나리오를 실습합니다. 투명 유리 벽으로 복도에서도 실습 장면을 볼 수 있습니다. 오른쪽은 디브리핑룸 2와 구역이 나뉩니다.",
@@ -161,6 +168,7 @@ const BASE_ROOMS: Room[] = [
     name: "디브리핑룸 2",
     label: "디브리핑룸 2",
     x: 1185, y: 497, w: 315, h: 228,
+    hiddenEdges: ["left"], // 다목적 시뮬레이션룸 쪽에서 점선으로 그림
     category: "교육실",
     summary: "다목적 시뮬레이션룸 오른쪽에 구역을 나눈 디브리핑룸입니다. 시뮬레이션 직후 이어서 성찰과 피드백을 진행합니다.",
     seats: 25,
@@ -169,11 +177,11 @@ const BASE_ROOMS: Room[] = [
   },
   {
     id: "storage-1",
-    name: "창고 1",
-    label: "창고 1",
+    name: "조정실",
+    label: "조정실",
     x: 1500, y: 497, w: 78, h: 185,
     category: "지원공간",
-    summary: "실습 물품과 장비를 보관하는 창고입니다.",
+    summary: "시뮬레이션 운영을 위한 조정실입니다.",
     facts: [],
     photos: [],
   },
