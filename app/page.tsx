@@ -89,7 +89,7 @@ export default function Home() {
           playsInline
           aria-label="단국대학교 간호시뮬레이션센터 소개 영상"
         >
-          <source src="/videos/center-tour.mp4" type="video/mp4" />
+          <source src="/videos/intro-guide.mp4" type="video/mp4" />
           이 브라우저에서는 영상을 재생할 수 없습니다.
         </video>
         <p className="mt-2 text-xs text-slate-500">소개 영상의 일부 장면은 가상으로 구성된 화면이며 실제 시공 모습과 다를 수 있습니다.</p>
