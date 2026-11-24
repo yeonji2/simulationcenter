@@ -49,6 +49,10 @@ const SITE: Record<string, Photo[]> = {
     sitePhoto("site-living-lab-2.jpg", "리빙랩 내부 — 바닥이 한 단 높은 공간"),
     sitePhoto("site-living-lab-3.jpg", "리빙랩 내부 — 바닥이 한 단 높은 공간"),
   ],
+  "control-2": [
+    sitePhoto("site-control-1-1.jpg", "조정실 입구 사이니지"),
+    sitePhoto("site-control-1-2.jpg", "조정실 내부 — 관찰 창"),
+  ],
   "debrief-1": [
     sitePhoto("site-debrief-1-1.jpg", "디브리핑룸 1 입구 사이니지"),
   ],
@@ -300,9 +304,12 @@ const BASE_ROOMS: Room[] = [
     label: "조정실 2",
     x: 1172, y: 795, w: 78, h: 220,
     category: "지원공간",
-    summary: "시뮬레이션 운영을 위한 조정실입니다.",
-    facts: [],
-    photos: [],
+    summary: "교수·오퍼레이터가 시뮬레이터를 조작하고 실습 장면을 관찰하는 조정실입니다.",
+    facts: ["관찰 창 설치"],
+    photos: [
+      { src: "/images/rooms/control-1.jpg", caption: "조정실 2 — 관찰 창과 조작 데스크 (3D 제안 렌더)" },
+      { src: "/images/rooms/signage-1.jpg", caption: "각 실 입구 사이니지 — 조정실 출입문과 외상응급시뮬레이션룸 유리 자동문 (3D 제안 렌더)" },
+    ],
   },
   {
     id: "station",
