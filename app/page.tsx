@@ -18,7 +18,7 @@ const HIGHLIGHTS = [
     body: "고충실도 성인 환자 시뮬레이터로 외상환자 초기 사정, 응급상황 대응, 의사소통을 실제 임상처럼 훈련합니다.",
   },
   {
-    title: "Immersive Room (PRISM 룸)",
+    title: "Immersive Room (PRISM)",
     tag: "몰입형 환경",
     body: "교통사고·낙상 등 다양한 외상 상황을 실제와 유사하게 구현해 팀 기반 임상 대응 교육을 강화합니다.",
   },

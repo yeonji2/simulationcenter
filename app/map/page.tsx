@@ -59,11 +59,9 @@ function RoomShape({ room }: { room: Room }) {
           className={`${room.id === "corridor-1" ? "fill-white" : FILL[room.category]} transition-colors group-hover:fill-sky-300`}
         />
         {room.id === "prism" && (
-          <rect
-            x={room.x + 6}
-            y={room.y + 6}
-            width={room.w - 12}
-            height={room.h - 12}
+          // 안쪽 파란 점선: 아래쪽은 그리지 않고 위·좌·우 세 변만 그린다.
+          <path
+            d={`M${room.x + 6} ${room.y + room.h - 6}V${room.y + 6}H${room.x + room.w - 6}V${room.y + room.h - 6}`}
             fill="none"
             stroke="#2563eb"
             strokeWidth={2}
