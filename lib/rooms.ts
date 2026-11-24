@@ -56,11 +56,6 @@ const SITE: Record<string, Photo[]> = {
   "debrief-1": [
     sitePhoto("site-debrief-1-1.jpg", "디브리핑룸 1 입구 사이니지"),
   ],
-  "debrief-2": [
-    sitePhoto("site-debrief-2-1.jpg", "디브리핑룸 2로 이어지는 복도"),
-    sitePhoto("site-debrief-2-2.jpg", "디브리핑룸 2 입구 사이니지"),
-    sitePhoto("site-debrief-2-3.jpg", "디브리핑룸 2 입구 사이니지", true),
-  ],
   "debrief-4": [
     sitePhoto("site-debrief-3-1.jpg", "디브리핑룸 3 입구 사이니지와 복도"),
     sitePhoto("site-debrief-3-2.jpg", "디브리핑룸 3 입구 사이니지", true),
@@ -173,7 +168,9 @@ const BASE_ROOMS: Room[] = [
     summary: "다목적 시뮬레이션룸 오른쪽에 구역을 나눈 디브리핑룸입니다. 시뮬레이션 직후 이어서 성찰과 피드백을 진행합니다.",
     seats: 25,
     facts: ["좌석 25석", "유리 칠판 설치"],
-    photos: [debriefFront],
+    photos: [
+      { src: "/images/rooms/debrief-room-2.jpg", caption: "디브리핑룸 2 — 공간 이미지 (실제 시공 모습과 다를 수 있음)", width: 1132, height: 655 },
+    ],
   },
   {
     id: "storage-1",
