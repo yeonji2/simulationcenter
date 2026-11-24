@@ -260,10 +260,10 @@ const BASE_ROOMS: Room[] = [
     name: "리빙랩 (Living Lab)",
     label: "리빙랩",
     x: 763, y: 795, w: 120, h: 220,
-    dashedEdges: ["right"], // 조정실 1과의 경계는 점선
+    dashedEdges: ["right"], // 조정실과의 경계는 점선
     category: "시뮬레이션",
     summary:
-      "가정집 환경을 재현한 공간입니다. 표준화환자와 간호학생이 집 안에서 서로 이야기하며 상담하고, 외상 예방과 생활환경 위험요인 관리를 연습합니다. 조정실 1에서 유리 창으로 관찰합니다.",
+      "가정집 환경을 재현한 공간입니다. 표준화환자와 간호학생이 집 안에서 서로 이야기하며 상담하고, 외상 예방과 생활환경 위험요인 관리를 연습합니다. 조정실에서 유리 창으로 관찰합니다.",
     facts: ["가정집 환경 구현", "표준화환자 시뮬레이션", "바닥 +300mm (단차)", "세면대 설치"],
     photos: [
       { src: "/images/rooms/living-lab-1.jpg", caption: "리빙랩 — 현장 공간(한 단 높은 원목 바닥)을 바탕으로 가정집 거실에서 표준화환자와 간호학생이 이야기하는 모습 (AI 생성 가상 이미지, 실제 모습과 다를 수 있음)", width: 1920, height: 1080 },
@@ -271,14 +271,14 @@ const BASE_ROOMS: Room[] = [
   },
   {
     id: "control-1",
-    name: "조정실 1",
-    label: "조정실 1",
+    name: "조정실",
+    label: "조정실",
     x: 883, y: 795, w: 74, h: 220,
     hiddenEdges: ["left"], // 리빙랩 쪽에서 점선으로 그림
     category: "지원공간",
     summary: "교수·오퍼레이터가 시뮬레이터를 조작하고 실습 장면을 관찰하는 조정실입니다.",
     facts: ["관찰 창 설치"],
-    photos: [], // 자기 사진은 없고, 아래 SHARE_PHOTOS_WITH 에 따라 리빙랩 사진을 함께 보여준다
+    photos: [],
   },
   {
     id: "trauma-sim",
@@ -321,16 +321,7 @@ const BASE_ROOMS: Room[] = [
   },
 ];
 
-// 다른 방의 사진을 함께 보여주는 방: 조정실 1은 리빙랩과 붙어 있어 같은 사진을 보여준다.
-const SHARE_PHOTOS_WITH: Record<string, string> = { "control-1": "living-lab" };
-
-const ROOMS_WITH_PHOTOS: Room[] = BASE_ROOMS.map((r) => ({ ...r, photos: [...(SITE[r.id] ?? []), ...r.photos] }));
-
-export const ROOMS: Room[] = ROOMS_WITH_PHOTOS.map((r) => {
-  const from = SHARE_PHOTOS_WITH[r.id];
-  const source = from ? ROOMS_WITH_PHOTOS.find((x) => x.id === from) : undefined;
-  return source ? { ...r, photos: source.photos } : r;
-});
+export const ROOMS: Room[] = BASE_ROOMS.map((r) => ({ ...r, photos: [...(SITE[r.id] ?? []), ...r.photos] }));
 
 export function getRoom(id: string) {
   return ROOMS.find((r) => r.id === id);
