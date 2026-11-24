@@ -300,14 +300,14 @@ const BASE_ROOMS: Room[] = [
   },
   {
     id: "control-2",
-    name: "조정실 2",
-    label: "조정실 2",
+    name: "조정실",
+    label: "조정실",
     x: 1172, y: 795, w: 78, h: 220,
     category: "지원공간",
     summary: "교수·오퍼레이터가 시뮬레이터를 조작하고 실습 장면을 관찰하는 조정실입니다.",
     facts: ["관찰 창 설치"],
     photos: [
-      { src: "/images/rooms/control-1.jpg", caption: "조정실 2 — 관찰 창과 조작 데스크 (3D 제안 렌더)" },
+      { src: "/images/rooms/control-1.jpg", caption: "조정실 — 관찰 창과 조작 데스크 (3D 제안 렌더)" },
       { src: "/images/rooms/signage-1.jpg", caption: "각 실 입구 사이니지 — 조정실 출입문과 외상응급시뮬레이션룸 유리 자동문 (3D 제안 렌더)" },
     ],
   },
