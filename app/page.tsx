@@ -13,7 +13,7 @@ const STATS = [
 
 const HIGHLIGHTS = [
   {
-    title: "외상응급 시뮬레이션룸",
+    title: "외상응급시뮬레이션룸",
     tag: "외상 시뮬레이션",
     body: "고충실도 성인 환자 시뮬레이터로 외상환자 초기 사정, 응급상황 대응, 의사소통을 실제 임상처럼 훈련합니다.",
   },
@@ -100,7 +100,7 @@ export default function Home() {
           <h2 className="text-2xl font-bold tracking-tight">센터 소개</h2>
           <p className="mt-4 leading-8 text-slate-700">
             단국대학교 간호시뮬레이션센터는 간호대학생과 지역사회 간호사가 환자 안전을 지키며 임상 역량을
-            키우는 시뮬레이션 교육 공간입니다. 다목적 시뮬레이션룸과 시뮬레이션실, 조정실, 디브리핑룸, 몰입형 환경을
+            키우는 시뮬레이션 교육 공간입니다. 다목적시뮬레이션룸과 시뮬레이션실, 조정실, 디브리핑룸, 몰입형 환경을
             한 층에 유기적으로 배치해, 각 실이 독립적으로 운영되면서도 필요할 때 함께 연계됩니다.
           </p>
           <p className="mt-4 leading-8 text-slate-700">

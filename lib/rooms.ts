@@ -31,18 +31,18 @@ const SITE: Record<string, Photo[]> = {
     sitePhoto("site-prism-2.jpg", "몰입형 시뮬레이션룸 내부"),
   ],
   "ward": [
-    sitePhoto("site-ward-1.jpg", "다목적 시뮬레이션룸 입구 사이니지"),
-    sitePhoto("site-ward-2.jpg", "다목적 시뮬레이션룸 입구 — 유리 벽 너머로 천장 커튼 레일이 보입니다"),
-    sitePhoto("site-ward-3.jpg", "다목적 시뮬레이션룸 내부 — 천장 커튼 레일과 싱크대"),
-    sitePhoto("site-ward-4.jpg", "다목적 시뮬레이션룸 내부 — 유리 벽과 수납장"),
+    sitePhoto("site-ward-1.jpg", "다목적시뮬레이션룸 입구 사이니지"),
+    sitePhoto("site-ward-2.jpg", "다목적시뮬레이션룸 입구 — 유리 벽 너머로 천장 커튼 레일이 보입니다"),
+    sitePhoto("site-ward-3.jpg", "다목적시뮬레이션룸 내부 — 천장 커튼 레일과 싱크대"),
+    sitePhoto("site-ward-4.jpg", "다목적시뮬레이션룸 내부 — 유리 벽과 수납장"),
   ],
   "storage-2": [
     sitePhoto("site-storage-2-1.jpg", "창고 2 — 기존 분전함"),
   ],
   "trauma-sim": [
-    sitePhoto("site-trauma-sim-1.jpg", "외상응급 시뮬레이션룸 입구 사이니지"),
-    sitePhoto("site-trauma-sim-2.jpg", "외상응급 시뮬레이션룸 내부 — 원목 수납장 벽과 음수대"),
-    sitePhoto("site-trauma-sim-4.jpg", "관찰 창 너머로 본 외상응급 시뮬레이션룸"),
+    sitePhoto("site-trauma-sim-1.jpg", "외상응급시뮬레이션룸 입구 사이니지"),
+    sitePhoto("site-trauma-sim-2.jpg", "외상응급시뮬레이션룸 내부 — 원목 수납장 벽과 음수대"),
+    sitePhoto("site-trauma-sim-4.jpg", "관찰 창 너머로 본 외상응급시뮬레이션룸"),
   ],
   "living-lab": [
     sitePhoto("site-living-lab-1.jpg", "리빙랩 입구 사이니지와 내부"),
@@ -140,18 +140,18 @@ const BASE_ROOMS: Room[] = [
   },
   {
     id: "ward",
-    name: "다목적 시뮬레이션룸",
-    label: "다목적 시뮬레이션",
+    name: "다목적시뮬레이션룸",
+    label: "다목적시뮬레이션룸",
     x: 778, y: 497, w: 407, h: 228,
     dashedEdges: ["right"], // 디브리핑룸 2와의 경계는 점선
     category: "시뮬레이션",
     summary:
-      "병상 3개와 천장 커튼 레일을 갖춘 다목적 시뮬레이션룸입니다. 병동 환경을 비롯한 다양한 시나리오를 실습합니다. 투명 유리 벽으로 복도에서도 실습 장면을 볼 수 있습니다. 오른쪽은 디브리핑룸 2와 구역이 나뉩니다.",
+      "병상 3개와 천장 커튼 레일을 갖춘 다목적시뮬레이션룸입니다. 병동 환경을 비롯한 다양한 시나리오를 실습합니다. 투명 유리 벽으로 복도에서도 실습 장면을 볼 수 있습니다. 오른쪽은 디브리핑룸 2와 구역이 나뉩니다.",
     facts: ["병상 3개", "싱크대 설치", "천장 커튼 레일"],
     photos: [
-      { src: "/images/rooms/ward-1.jpg", caption: "다목적 시뮬레이션룸 — 병상과 천장 커튼 레일" },
-      { src: "/images/rooms/ward-2.jpg", caption: "다목적 시뮬레이션룸 — 3D 제안 렌더" },
-      { src: "/images/rooms/ward-3.jpg", caption: "다목적 시뮬레이션룸 — 3D 제안 렌더" },
+      { src: "/images/rooms/ward-1.jpg", caption: "다목적시뮬레이션룸 — 병상과 천장 커튼 레일" },
+      { src: "/images/rooms/ward-2.jpg", caption: "다목적시뮬레이션룸 — 3D 제안 렌더" },
+      { src: "/images/rooms/ward-3.jpg", caption: "다목적시뮬레이션룸 — 3D 제안 렌더" },
     ],
   },
   {
@@ -159,9 +159,9 @@ const BASE_ROOMS: Room[] = [
     name: "디브리핑룸 2",
     label: "디브리핑룸 2",
     x: 1185, y: 497, w: 315, h: 228,
-    hiddenEdges: ["left"], // 다목적 시뮬레이션룸 쪽에서 점선으로 그림
+    hiddenEdges: ["left"], // 다목적시뮬레이션룸 쪽에서 점선으로 그림
     category: "교육실",
-    summary: "다목적 시뮬레이션룸 오른쪽에 구역을 나눈 디브리핑룸입니다. 시뮬레이션 직후 이어서 성찰과 피드백을 진행합니다.",
+    summary: "다목적시뮬레이션룸 오른쪽에 구역을 나눈 디브리핑룸입니다. 시뮬레이션 직후 이어서 성찰과 피드백을 진행합니다.",
     seats: 25,
     facts: ["좌석 25석", "유리 칠판 설치"],
     photos: [
@@ -251,9 +251,9 @@ const BASE_ROOMS: Room[] = [
     label: "복도 1",
     x: 670, y: 725, w: 830, h: 290,
     category: "지원공간",
-    summary: "다목적 시뮬레이션룸 앞에서 리빙랩·외상응급 시뮬레이션룸·조정실·스테이션으로 이어지는 중앙 복도입니다. 양개형 유리 자동문으로 다목적 시뮬레이션룸과 연결됩니다.",
+    summary: "다목적시뮬레이션룸 앞에서 리빙랩·외상응급시뮬레이션룸·조정실·스테이션으로 이어지는 중앙 복도입니다. 양개형 유리 자동문으로 다목적시뮬레이션룸과 연결됩니다.",
     facts: ["양개형 유리 자동문", "금속 보드 칠판 설치"],
-    photos: [{ src: "/images/rooms/corridor-1.jpg", caption: "중앙 복도 — 유리 벽 너머로 다목적 시뮬레이션룸이 보입니다" }],
+    photos: [{ src: "/images/rooms/corridor-1.jpg", caption: "중앙 복도 — 유리 벽 너머로 다목적시뮬레이션룸이 보입니다" }],
   },
   {
     id: "living-lab",
@@ -282,15 +282,15 @@ const BASE_ROOMS: Room[] = [
   },
   {
     id: "trauma-sim",
-    name: "외상응급 시뮬레이션룸",
-    label: "외상응급 시뮬레이션",
+    name: "외상응급시뮬레이션룸",
+    label: "외상응급시뮬레이션룸",
     x: 957, y: 795, w: 215, h: 220,
     category: "시뮬레이션",
     summary:
-      "고충실도 성인 환자 시뮬레이터를 갖춘 외상응급 시뮬레이션 공간입니다. 외상환자 초기 사정, 응급상황 대응, 의사소통을 실제 임상 상황처럼 통합적으로 훈련합니다.",
+      "고충실도 성인 환자 시뮬레이터를 갖춘 외상응급시뮬레이션룸입니다. 외상환자 초기 사정, 응급상황 대응, 의사소통을 실제 임상 상황처럼 통합적으로 훈련합니다.",
     facts: ["고충실도 시뮬레이션", "병상 1개", "세면대 설치"],
     photos: [
-            aiPhoto("trauma-scenario.jpg", "외상응급 시뮬레이션룸 — 현장 공간에서 고충실도 환자 시뮬레이터로 외상 시나리오를 실습하는 모습"),
+            aiPhoto("trauma-scenario.jpg", "외상응급시뮬레이션룸 — 현장 공간에서 고충실도 환자 시뮬레이터로 외상 시나리오를 실습하는 모습"),
       { src: "/images/rooms/signage-1.jpg", caption: "출입구 — 유리 자동문과 안내 사이니지 (3D 제안 렌더, 사이니지 표기는 '시뮬실01')" },
     ],
   },
@@ -310,7 +310,7 @@ const BASE_ROOMS: Room[] = [
     label: "스테이션",
     x: 1250, y: 795, w: 110, h: 220,
     category: "지원공간",
-    summary: "센터 출입구에서 가장 먼저 만나는 안내 데스크와 수납 공간입니다. 입구 쪽에서 디브리핑룸 1과 다목적 시뮬레이션룸이 한눈에 보입니다.",
+    summary: "센터 출입구에서 가장 먼저 만나는 안내 데스크와 수납 공간입니다. 입구 쪽에서 디브리핑룸 1과 다목적시뮬레이션룸이 한눈에 보입니다.",
     facts: ["출입구 안내 데스크", "오픈 수납장", "게시판"],
     photos: [
       { src: "/images/rooms/station-1.jpg", caption: "출입구 스테이션" },
