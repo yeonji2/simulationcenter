@@ -10,7 +10,6 @@ const aiPhoto = (file: string, caption: string): Photo => ({
   height: 1080,
 });
 const debriefFront = aiPhoto("debrief-u-front.jpg", "디브리핑 장면 — U자형 테이블에 보라색 실습복 학생들이 앉고 교수자가 서서 디브리핑하는 모습");
-const debriefAngle = aiPhoto("debrief-u-angle.jpg", "디브리핑 장면 — U자형 테이블 안쪽에서 교수자가 학생들과 피드백을 나누는 모습");
 
 // 실제 현장 사진(시공 중 촬영). 방별로 맨 앞에 보여 준다.
 const sitePhoto = (name: string, caption: string, portrait = false): Photo => ({
@@ -138,7 +137,9 @@ const BASE_ROOMS: Room[] = [
     summary: "시뮬레이션 실습 후 학습자가 함께 모여 성찰하고 피드백을 나누는 중규모 디브리핑룸입니다.",
     seats: 20,
     facts: ["좌석 20석", "유리 칠판 설치"],
-    photos: [debriefAngle],
+    photos: [
+      { src: "/images/rooms/debrief-room-4.jpg", caption: "디브리핑룸 4 — 학생들이 둘러앉아 디브리핑하는 장면 (가상 이미지, 실제 모습과 다를 수 있음)", width: 1165, height: 645 },
+    ],
   },
   {
     id: "ward",
@@ -229,7 +230,9 @@ const BASE_ROOMS: Room[] = [
     summary: "시뮬레이션 실습 후 학습자가 함께 모여 성찰하고 피드백을 나누는 소규모 디브리핑룸입니다.",
     seats: 16,
     facts: ["좌석 16석", "유리 칠판 설치"],
-    photos: [debriefFront],
+    photos: [
+      { src: "/images/rooms/debrief-room-5.jpg", caption: "디브리핑룸 5 — 네모난 테이블과 의자가 놓인 공간 (실제 시공 모습과 다를 수 있음)", width: 1150, height: 654 },
+    ],
   },
   {
     id: "corridor-2",
